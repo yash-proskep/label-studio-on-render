@@ -1,7 +1,7 @@
 FROM python:3.10-slim
 
-# Set environment variables
-ENV LABEL_STUDIO_PORT=8080 \
+# Environment settings for Label Studio
+ENV LABEL_STUDIO_PORT=10000 \
     LABEL_STUDIO_HOST=0.0.0.0
 
 # Install system dependencies
@@ -12,8 +12,11 @@ RUN apt-get update && apt-get install -y \
 # Install Label Studio
 RUN pip install label-studio
 
-# Expose port
-EXPOSE 8080
+# Expose the correct port
+EXPOSE 10000
 
-# Run Label Studio on start
-CMD ["label-studio", "start", "--host", "0.0.0.0", "--port", "8080"]
+# Set working directory
+WORKDIR /label-studio
+
+# Start Label Studio using the port Render expects
+CMD ["label-studio", "start", "--host", "0.0.0.0", "--port", "10000"]
