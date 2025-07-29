@@ -8,10 +8,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip install label-studio
 
-COPY override_settings.py .
-
 ENV PORT=10000
-ENV DJANGO_SETTINGS_MODULE=override_settings
 
 EXPOSE ${PORT}
 
