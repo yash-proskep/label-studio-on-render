@@ -8,7 +8,9 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip install label-studio
 
+# Use default settings, no custom override
 ENV PORT=10000
+ENV USE_ENFORCE_CSRF_CHECKS=false
 
 EXPOSE ${PORT}
 
